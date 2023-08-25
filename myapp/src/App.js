@@ -11,8 +11,8 @@ function App() {
       <Container>
         <Logo />
         {/* <Header text="로그인 하기" /> */}
-        {/* <TodayPage /> */}
-        <PrevPage />
+        <TodayPage />
+        {/* <PrevPage /> */}
       </Container>
     </div>
   );

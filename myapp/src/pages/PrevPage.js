@@ -10,9 +10,6 @@ export default function PrevPage() {
           style={{
             width: "24px",
             height: "24px",
-            position: "fixed",
-            left: "240px",
-            top: "310px",
           }}
         />
         <TemporaryBox></TemporaryBox>
@@ -20,9 +17,6 @@ export default function PrevPage() {
           style={{
             width: "24px",
             height: "24px",
-            position: "fixed",
-            right: "240px",
-            top: "310px",
           }}
         />
       </Body>
