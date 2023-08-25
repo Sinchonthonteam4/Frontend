@@ -6,6 +6,7 @@ const Header = ({ text }) => {
 
 const HeaderContainer = styled.div`
   margin-top: 42px;
+  margin-bottom: 63px;
   color: #000;
   text-align: center;
   font-family: Pretendard Variable;
