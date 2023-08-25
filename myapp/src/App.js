@@ -15,8 +15,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LogInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route path="/main" element={<TodayPage />}
-          // <Route path="/prev" element={<PrevPage />}
+          <Route path="/main" element={<TodayPage />} />
+          {/* <Route path="/prev" element={<PrevPage />} /> */}
         </Routes>
       </Router>
     </div>
