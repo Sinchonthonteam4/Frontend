@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Container } from "../Containter";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
+
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
