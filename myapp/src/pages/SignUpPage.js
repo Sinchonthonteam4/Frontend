@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { Container } from "../Containter";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
+
+const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
+
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +20,7 @@ const SignUpPage = () => {
   };
   const navigate = useNavigate();
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     if (email === "") {
       setErrorMessage("아이디를 입력하세요");
       return;
@@ -34,9 +37,32 @@ const SignUpPage = () => {
       alert("대학교를 선택하세요!");
       return;
     }
-    setErrorMessage("");
-    alert("회원 가입 성공!");
-    navigate("/");
+
+    try {
+      const response = await fetch(`${BASE_URL}/auth/signup/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          university: selectedUniversity,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert("회원 가입 성공!");
+        navigate("/");
+      } else {
+        setErrorMessage(data.message || "회원 가입 실패!");
+      }
+    } catch (error) {
+      console.log();
+      setErrorMessage("서버와의 통신에 실패했습니다.");
+    }
   };
 
   return (
@@ -67,10 +93,10 @@ const SignUpPage = () => {
           <option value="" disabled>
             학교를 선택하세요
           </option>
-          <option value="서강대">서강대</option>
-          <option value="연세대">연세대</option>
-          <option value="이대">이대</option>
-          <option value="홍대">홍대</option>
+          <option value="서강대학교">서강대학교</option>
+          <option value="연세대학교">연세대학교</option>
+          <option value="이화여자대학교">이화여자대학교</option>
+          <option value="홍익대학교">홍익대학교</option>
         </select>
       </SelectUniv>
       <StyledButton onClick={handleSignup}>로그인 하기</StyledButton>

@@ -4,6 +4,7 @@ import SignUpPage from "./pages/SignUpPage";
 import LogInPage from "./pages/LogInPage";
 import RecordPage from "./pages/RecordPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ReportPage from "./pages/ReportPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/main" element={<TodayPage />} />
           {/* <Route path="/prev" element={<PrevPage />} /> */}
           <Route path="/record" element={<RecordPage />} />
+          <Route path="/report" element={<ReportPage />} />
         </Routes>
       </Router>
     </div>

@@ -4,22 +4,60 @@ import { Container } from "../Containter";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 
 const LogInPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const handleGoToSignUp = () => {
     navigate("/signup");
   };
+  const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
+  const handleLogin = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/auth/login/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
 
+      const data = await response.json();
+
+      if (data.message === "Login Success") {
+        alert("로그인 성공!");
+        navigate("/main");
+      } else {
+        console.log(data.message || "로그인 실패!");
+      }
+    } catch (error) {
+      console.log("서버와의 통신에 실패했습니다.");
+    }
+  };
   return (
     <Container>
       <Logo />
       <Header text="로그인 하기" />
-      <InputComponent type="text" placeholder="아이디를 입력하세요" />
-      <InputComponent type="password" placeholder="비밀번호를 입력하세요" />
+      <InputComponent
+        type="text"
+        placeholder="아이디를 입력하세요"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <InputComponent
+        type="password"
+        placeholder="비밀번호를 입력하세요"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
       <MessageContainer>로그인 후 사용 가능합니다.</MessageContainer>
       <GotoSignUp onClick={handleGoToSignUp}>회원가입하기</GotoSignUp>
-      <Styledbutton>로그인 하기</Styledbutton>
+      <Styledbutton onClick={handleLogin}>로그인 하기</Styledbutton>
     </Container>
   );
 };

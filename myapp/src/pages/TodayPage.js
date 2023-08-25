@@ -2,14 +2,15 @@ import styled from "styled-components";
 //import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useState } from "react";
 import emptycup from "../images/emptycup.png";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function TodayPage() {
-  //const navigate = useNavigate();
   const [isFill, setIsFill] = useState(false);
-
+  const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
+  const navigate = useNavigate();
   const recordHandler = () => {
     setIsFill(true);
+    navigate("/record");
   };
 
   // const navigateToPrev = () => {
@@ -102,6 +103,7 @@ const Bottom = styled.div`
 
 const RecordBtn = styled.button`
   background-color: #ffc107;
+  cursor: pointer;
   color: white;
   font-size: 16px;
   font-weight: 600;
