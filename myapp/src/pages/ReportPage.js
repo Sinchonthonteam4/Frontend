@@ -2,7 +2,8 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Logo from "../components/Logo";
 import { Container } from "../Containter";
-import coinimg from "../images/Coin.svg";
+import Goldcoin from "../images/Goldcoin.svg";
+
 
 const ReportPage = () => {
   const weeklyData = {
@@ -46,6 +47,7 @@ const ReportPage = () => {
           </BarsArea>
         </GraphContent>
       </GraphContainer>
+
       <TextContainer>
         OOO님이 일주일 간 섭취한 카페인량은 총 XX mg 이며, X요일에 가장 많이
         섭취하셨네요! 내 평균 섭취량은 XXmg으로, 일주일 권장 섭취량보다 XX mg
@@ -55,6 +57,7 @@ const ReportPage = () => {
       <Styledbutton onClick={() => copyToClipboard(LINK_TO_COPY)}>
         내 결과 공유하기
       </Styledbutton>
+
     </Container>
   );
 };
@@ -70,9 +73,9 @@ const GraphTitle = styled.div`
   display: flex;
   width: 168px;
   height: 15px;
-  margin-top: 6px;
+  margin-top: 16px;
   margin-left: 11px;
-  margin-bottom: 5px;
+  margin-bottom: 16px;
   flex-direction: column;
   justify-content: center;
   color: #000;
@@ -87,7 +90,7 @@ const GraphTitle = styled.div`
 
 const GraphContent = styled.div`
   display: flex;
-  padding: 10px;
+  padding: 20px 10px;
   border: 1px solid var(--stroke-color, #eff0f6);
 
   background: #fff;
@@ -185,4 +188,5 @@ const Styledbutton = styled.button`
   line-height: 18px; /* 112.5% */
   border: none;
 `;
+
 export default ReportPage;

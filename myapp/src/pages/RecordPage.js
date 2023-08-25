@@ -289,7 +289,7 @@ const BrandName = styled.div`
   display: flex;
   flex-direction: row;
   align-items: self-start;
-  margin-top: 26px;
+  margin-top: 48px;
 
   span {
     display: flex;
@@ -312,7 +312,7 @@ const Menu = styled.div`
   display: flex;
   flex-direction: row;
   align-items: self-start;
-  margin-top: 35px;
+  margin-top: 48px;
 
   span {
     display: flex;
@@ -335,7 +335,7 @@ const Amount = styled.div`
   display: flex;
   flex-direction: row;
   align-items: self-start;
-  margin-top: 36px;
+  margin-top: 48px;
 
   span {
     display: flex;

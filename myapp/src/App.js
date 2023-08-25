@@ -16,9 +16,7 @@ function App() {
           <Route path="/main" element={<TodayPage />} />
           <Route path="/record" element={<RecordPage />} />
           <Route path="/report" element={<ReportPage />} />
-
           <Route path="/challenge" element={<ChallengePage />} />
-
         </Routes>
       </Router>
     </div>
