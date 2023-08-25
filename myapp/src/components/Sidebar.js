@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from "react";
 import { CgClose } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const SideBar = ({ isOpen, setIsOpen }) => {
   const outside = useRef();
   const navigate = useNavigate();
 
@@ -55,7 +55,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   );
 };
 
-export default Sidebar;
+export default SideBar;
 
 const SideBarWrap = styled.div`
   z-index: 5;
