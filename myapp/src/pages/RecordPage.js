@@ -1,5 +1,5 @@
 import { Container } from "../Containter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Logo from "../components/Logo";
 import axios from "axios";
@@ -78,7 +78,7 @@ const RecordPage = () => {
               <ul>
                 <li
                   className={selectedBrand === "스타벅스" ? "selected" : ""}
-                  onClick={() => handleBrandClick("스타벅스")}
+                  onClick={() => [handleBrandClick("스타벅스")]}
                 >
                   스타벅스
                 </li>
@@ -295,7 +295,7 @@ const BrandName = styled.div`
   display: flex;
   flex-direction: row;
   align-items: self-start;
-  margin-top: 26px;
+  margin-top: 48px;
 
   span {
     display: flex;
@@ -318,7 +318,7 @@ const Menu = styled.div`
   display: flex;
   flex-direction: row;
   align-items: self-start;
-  margin-top: 35px;
+  margin-top: 48px;
 
   span {
     display: flex;
@@ -341,7 +341,7 @@ const Amount = styled.div`
   display: flex;
   flex-direction: row;
   align-items: self-start;
-  margin-top: 36px;
+  margin-top: 48px;
 
   span {
     display: flex;
@@ -372,7 +372,7 @@ const ResultBtn = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: 18px; /* 112.5% */
-  margin-top: 43px;
+  margin-top: 72px;
   margin-bottom: 97px;
   cursor: pointer;
 `;

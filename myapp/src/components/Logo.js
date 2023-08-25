@@ -1,7 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 import vector from "../images/Vector.svg";
-import Sidebar from "./SideBar";
+import SideBar from "./SideBar";
+import MainLogo from "../images/Caffein-er.png";
 
 const Logo = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,8 +16,10 @@ const Logo = () => {
       <MenuBtn role="button" onClick={toggleSide}>
         <MenuImg src={vector} />
       </MenuBtn>
-      <LogoBox>커피 마스터</LogoBox>
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+      <LogoBox>
+        <img src={MainLogo} alt="logo" />
+      </LogoBox>
+      <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
     </LogoContainer>
   );
 };

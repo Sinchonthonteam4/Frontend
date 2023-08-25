@@ -52,9 +52,9 @@ const GraphTitle = styled.div`
   display: flex;
   width: 168px;
   height: 15px;
-  margin-top: 6px;
+  margin-top: 16px;
   margin-left: 11px;
-  margin-bottom: 5px;
+  margin-bottom: 16px;
   flex-direction: column;
   justify-content: center;
   color: #000;
@@ -69,7 +69,7 @@ const GraphTitle = styled.div`
 
 const GraphContent = styled.div`
   display: flex;
-  padding: 10px;
+  padding: 20px 10px;
   border: 1px solid var(--stroke-color, #eff0f6);
 
   background: #fff;

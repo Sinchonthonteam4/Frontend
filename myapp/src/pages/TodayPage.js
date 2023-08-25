@@ -8,8 +8,6 @@ import { Container } from "../Containter";
 import Logo from "../components/Logo";
 
 export default function TodayPage({ isOpen }) {
-  //const navigate = useNavigate();
-
   const [isFill, setIsFill] = useState(false);
   const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
   const navigate = useNavigate();
@@ -18,34 +16,17 @@ export default function TodayPage({ isOpen }) {
     navigate("/record");
   };
 
-  // const navigateToPrev = () => {
-  //   navigate('/prevPage')
-  // }
-
   return (
     <Container>
       <Logo />
       <Wrapper>
         <Title>오늘 하루 섭취한 카페인</Title>
         <Body>
-          {/* <BsChevronLeft
-          style={{
-            width: "24px",
-            height: "24px",
-          }}
-          onClick={navigateToPrev}}
-        /> */}
           <img
             src={emptycup}
             alt="emptycup"
             style={{ margin: "52px 80px 46px 80px" }}
           />
-          {/* <BsChevronRight
-          style={{
-            width: "24px",
-            height: "24px",
-          }}
-        /> */}
         </Body>
         <Bottom>
           {isFill ? (
@@ -92,13 +73,6 @@ const Body = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`;
-
-const TemporaryBox = styled.div`
-  background-color: #d9d9d9;
-  width: 120px;
-  height: 240px;
-  margin: 60px 0 70px 0;
 `;
 
 const Bottom = styled.div`
