@@ -12,7 +12,6 @@ function App() {
         <Logo />
         {/* <Header text="로그인 하기" /> */}
         <TodayPage />
-        {/* <PrevPage /> */}
       </Container>
     </div>
   );
