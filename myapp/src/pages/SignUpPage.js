@@ -10,6 +10,11 @@ const SignUpPage = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedUniversity, setSelectedUniversity] = useState("");
+
+  const handleSelectionChange = (e) => {
+    setSelectedUniversity(e.target.value);
+  };
   const navigate = useNavigate();
 
   const handleSignup = () => {
@@ -23,6 +28,10 @@ const SignUpPage = () => {
     }
     if (password !== passwordConfirm) {
       setErrorMessage("비밀번호와 비밀번호 확인이 일치하지 않습니다!");
+      return;
+    }
+    if (selectedUniversity === "") {
+      alert("대학교를 선택하세요!");
       return;
     }
     setErrorMessage("");
@@ -53,6 +62,17 @@ const SignUpPage = () => {
         value={passwordConfirm}
         onChange={(e) => setPasswordConfirm(e.target.value)}
       />
+      <SelectUniv>
+        <select value={selectedUniversity} onChange={handleSelectionChange}>
+          <option value="" disabled>
+            학교를 선택하세요
+          </option>
+          <option value="서강대">서강대</option>
+          <option value="연세대">연세대</option>
+          <option value="이대">이대</option>
+          <option value="홍대">홍대</option>
+        </select>
+      </SelectUniv>
       <StyledButton onClick={handleSignup}>로그인 하기</StyledButton>
     </Container>
   );
@@ -84,4 +104,38 @@ const StyledButton = styled.button`
   line-height: 18px; /* 112.5% */
   border: none;
 `;
+
+const SelectUniv = styled.div`
+  margin-left: 52px;
+  margin-bottom: 15px;
+  width: 260px;
+
+  padding: 8px 0px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  background: var(--default-white, #fff);
+  select {
+    display: flex;
+    height: 100%;
+    padding: 8px 24px;
+    flex-direction: column;
+    gap: var(--percent, 0px);
+    align-self: stretch;
+    text-align: center;
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: var(--secondary-dark-color, #54595e);
+    font-family: Pretendard Variable;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px; /* 100% */
+    border-radius: var(--percent, 15px);
+    border: 1px solid #ced4da;
+    background: #fff;
+  }
+`;
+
 export default SignUpPage;
