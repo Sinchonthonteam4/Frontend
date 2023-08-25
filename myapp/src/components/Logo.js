@@ -4,6 +4,7 @@ import vector from "../images/Vector.svg";
 import SideBar from "./SideBar";
 import MainLogo from "../images/Caffein-er.png";
 
+
 const Logo = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,6 +20,7 @@ const Logo = () => {
       <LogoBox>
         <img src={MainLogo} alt="logo" />
       </LogoBox>
+
       <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
     </LogoContainer>
   );

@@ -31,6 +31,7 @@ const LogInPage = () => {
 
       if (data.message === "Login Success") {
         alert("로그인 성공!");
+        localStorage.setItem("login-token", data.token.access);
         navigate("/main");
       } else {
         console.log(data.message || "로그인 실패!");
@@ -101,7 +102,7 @@ const Styledbutton = styled.button`
   margin-left: 130px;
   border-radius: 6px;
   background: #ffc107;
-  color: var(--default-white, #fff);
+  color: var(—default-white, #fff);
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
