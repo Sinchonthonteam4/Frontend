@@ -2,11 +2,13 @@ import { Container } from "../Containter";
 import Logo from "../components/Logo";
 import styled from "styled-components";
 
+
 import boost from "../images/boost.png";
 import sogangUniv from "../images/sogangUniv.png";
 import yonseiUniv from "../images/yonseiUniv.png";
 import ewhaUniv from "../images/ewhaUniv.png";
 import hongikUniv from "../images/hongikUniv.png";
+
 
 const ChallengePage = () => {
   return (

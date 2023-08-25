@@ -5,6 +5,7 @@ import SideBar from "./SideBar";
 import MainLogo from "../images/Caffein-er.png";
 import { useNavigate } from "react-router-dom";
 
+
 const Logo = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -24,6 +25,7 @@ const Logo = () => {
       <LogoBox onClick={navHome}>
         <img src={MainLogo} alt="logo" />
       </LogoBox>
+
       <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
     </LogoContainer>
   );
