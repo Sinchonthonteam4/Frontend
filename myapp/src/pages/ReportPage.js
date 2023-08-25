@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Logo from "../components/Logo";
 import { Container } from "../Containter";
-import coinimg from "../images/Coin.svg";
+import coinimg from "../images/coin.svg";
 
 const ReportPage = () => {
   const weeklyData = {
@@ -13,6 +13,15 @@ const ReportPage = () => {
     금: 650,
     토: 800,
     일: 350,
+  };
+  const LINK_TO_COPY = "www.naver.com"; // 배포한 링크 수정 필요.
+  const copyToClipboard = async (text) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      alert("링크가 클립보드에 복사되었어요! 친구에게 공유해보세요!");
+    } catch (err) {
+      alert("링크를 복사하는 데 실패했습니다.", err);
+    }
   };
   return (
     <Container>
@@ -37,6 +46,15 @@ const ReportPage = () => {
           </BarsArea>
         </GraphContent>
       </GraphContainer>
+      <TextContainer>
+        OOO님이 일주일 간 섭취한 카페인량은 총 XX mg 이며, X요일에 가장 많이
+        섭취하셨네요! 내 평균 섭취량은 XXmg으로, 일주일 권장 섭취량보다 XX mg
+        더/덜 마셨어요. 레포트 결과가 마음에 드신다면, 인스타그램에 내 결과를
+        공유해 더 많은 친구들과 비교해 보세요!
+      </TextContainer>
+      <Styledbutton onClick={() => copyToClipboard(LINK_TO_COPY)}>
+        내 결과 공유하기
+      </Styledbutton>
     </Container>
   );
 };
@@ -136,5 +154,35 @@ const DayLabel = styled.div`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+`;
+
+const TextContainer = styled.div`
+  width: 307px;
+  color: #313131;
+  margin-top: 20px;
+  margin-left: 26px;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px; /* 162.5% */
+`;
+const Styledbutton = styled.button`
+  display: inline-flex;
+  cursor: pointer;
+  padding: 10px 16px;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 18px;
+  margin-left: 130px;
+  border-radius: 6px;
+  background: #ffc107;
+  color: var(--default-white, #fff);
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px; /* 112.5% */
+  border: none;
 `;
 export default ReportPage;

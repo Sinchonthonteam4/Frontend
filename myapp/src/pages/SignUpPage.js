@@ -6,7 +6,6 @@ import { Container } from "../Containter";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
 
-
 const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -60,7 +59,7 @@ const SignUpPage = () => {
         setErrorMessage(data.message || "회원 가입 실패!");
       }
     } catch (error) {
-      console.log();
+      console.log(error);
       setErrorMessage("서버와의 통신에 실패했습니다.");
     }
   };
@@ -68,7 +67,7 @@ const SignUpPage = () => {
   return (
     <Container>
       <Logo />
-      <Header text="로그인 하기" />
+      <Header text="회원가입 하기" />
       <InputComponent
         type="text"
         placeholder="사용할 이메일을 입력하세요. "
@@ -99,7 +98,7 @@ const SignUpPage = () => {
           <option value="홍익대학교">홍익대학교</option>
         </select>
       </SelectUniv>
-      <StyledButton onClick={handleSignup}>로그인 하기</StyledButton>
+      <StyledButton onClick={handleSignup}>회원가입 하기</StyledButton>
     </Container>
   );
 };
@@ -115,6 +114,7 @@ const ErrorMessage = styled.p`
 
 const StyledButton = styled.button`
   display: inline-flex;
+  cursor: pointer;
   padding: 10px 16px;
   align-items: flex-start;
   gap: 8px;
