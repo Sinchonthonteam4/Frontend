@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+//import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useState } from "react";
-// import emptycup from "../images/emptycup.png";
+import emptycup from "../images/emptycup.png";
 // import { useNavigate } from "react-router-dom";
 
 export default function TodayPage() {
@@ -15,6 +15,7 @@ export default function TodayPage() {
   // const navigateToPrev = () => {
   //   navigate('/prevPage')
   // }
+
   return (
     <Wrapper>
       <Title>오늘 하루 섭취한 카페인</Title>
@@ -26,11 +27,11 @@ export default function TodayPage() {
           }}
           onClick={navigateToPrev}}
         /> */}
-        {/* <img
+        <img
           src={emptycup}
           alt="emptycup"
           style={{ margin: "52px 80px 46px 80px" }}
-        /> */}
+        />
         {/* <BsChevronRight
           style={{
             width: "24px",

@@ -4,6 +4,7 @@ import { Container } from "../Containter";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
+
 const LogInPage = () => {
   const navigate = useNavigate();
   const handleGoToSignUp = () => {
@@ -15,13 +16,14 @@ const LogInPage = () => {
       <Logo />
       <Header text="로그인 하기" />
       <InputComponent type="text" placeholder="아이디를 입력하세요" />
-      <InputComponent type="text" placeholder="비밀번호를 입력하세요" />
+      <InputComponent type="password" placeholder="비밀번호를 입력하세요" />
       <MessageContainer>로그인 후 사용 가능합니다.</MessageContainer>
       <GotoSignUp onClick={handleGoToSignUp}>회원가입하기</GotoSignUp>
       <Styledbutton>로그인 하기</Styledbutton>
     </Container>
   );
 };
+
 const MessageContainer = styled.div`
   width: 308px;
   margin-top: 27px;
