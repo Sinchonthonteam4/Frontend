@@ -159,25 +159,25 @@ const RecordPage = () => {
             {amountDropdownOpen && (
               <ul>
                 <li
-                  className={selectedAmount === "1잔" ? "selected" : ""}
+                  className={selectedAmount === 1 ? "selected" : ""}
                   onClick={() => handleAmountClick("1잔")}
                 >
                   1잔
                 </li>
                 <li
-                  className={selectedAmount === "2잔" ? "selected" : ""}
+                  className={selectedAmount === 2 ? "selected" : ""}
                   onClick={() => handleAmountClick("2잔")}
                 >
                   2잔
                 </li>
                 <li
-                  className={selectedAmount === "3잔" ? "selected" : ""}
+                  className={selectedAmount === 3 ? "selected" : ""}
                   onClick={() => handleAmountClick("3잔")}
                 >
                   3잔
                 </li>
                 <li
-                  className={selectedAmount === "4잔" ? "selected" : ""}
+                  className={selectedAmount === 4 ? "selected" : ""}
                   onClick={() => handleAmountClick("4잔")}
                 >
                   4잔
