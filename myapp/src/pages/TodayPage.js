@@ -1,42 +1,20 @@
 import styled from "styled-components";
 //import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { useState } from "react";
 import emptycup from "../images/emptycup.png";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 import { Container } from "../Containter";
 import Logo from "../components/Logo";
-import axios from "axios";
 
 export default function TodayPage({ isOpen }) {
   const [isFill, setIsFill] = useState(false);
-  const [totalCaffeine, setTotalCaffeine] = useState(0);
-
+  const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const headers = {
-      Authorization: `Bearer ${localStorage.getItem("login-token")}`,
-    };
-
-    axios
-      .get(`${BASE_URL}/your_endpoint_here`, { headers })
-      .then((response) => {
-        const data = response.data;
-        if (data && data.length > 0 && data[0].total > 0) {
-          setIsFill(true);
-          setTotalCaffeine(data[0].total);
-        }
-      })
-      .catch((error) => {
-        console.error("Error fetching caffeine data:", error);
-      });
-  }, []);
   const recordHandler = () => {
     setIsFill(true);
     navigate("/record");
   };
-
 
   return (
     <Container>
@@ -55,9 +33,9 @@ export default function TodayPage({ isOpen }) {
             <>
               <AlertText>
                 오늘 하루 적정량보다
-                <br /> {totalCaffeine} mg 더 섭취했어요.
+                <br /> xx mg 더 섭취했어요.
                 <br />
-                <br /> 님, 조절이 필요해요!
+                <br /> OO님, 조절이 필요해요!
               </AlertText>
               <EditBtn>
                 <text>섭취량 수정하기</text>

@@ -3,7 +3,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import Logo from "../components/Logo";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const RecordPage = () => {
   const [brandDropdownOpen, setBrandDropdownOpen] = useState(false);
@@ -41,8 +40,9 @@ const RecordPage = () => {
   const handleAmountClick = (amount) => {
     setSelectedAmount(Number(amount));
   };
-  const navigate = useNavigate();
-  const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
+
+  const BASE_URL =
+    "https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app";
 
   const handleSubmit = () => {
     if (selectedBrand && selectedMenu && selectedAmount) {
@@ -50,27 +50,22 @@ const RecordPage = () => {
         cafe: selectedBrand,
         drink: selectedMenu,
         cups: selectedAmount,
-
       };
       console.log(data);
 
-      if (localStorage.getItem("login-token")) {
-        const headers = {
-          Authorization: `Bearer ${localStorage.getItem("login-token")}`,
-        };
+      const accessToken = localStorage.getItem("login-token");
+      const headers = {
+        Authorization: `Bearer ${accessToken}`,
+      };
 
-
-        axios
-          .post(`${BASE_URL}/reports/`, data, { headers: headers })
-          .then((response) => {
-            console.log("Data sent successfully:", response.data);
-
-            navigate("/main");
-          })
-          .catch((error) => {
-            console.error("Error sending data:", error);
-          });
-
+      axios
+        .post(`${BASE_URL}/reports/`, data, { headers })
+        .then((response) => {
+          console.log("Data sent successfully:", response.data);
+        })
+        .catch((error) => {
+          console.error("Error sending data:", error);
+        });
     } else {
       console.warn("브랜드, 메뉴, 용량을 모두 선택하세요.");
     }
@@ -97,7 +92,7 @@ const RecordPage = () => {
                   className={selectedBrand === "이디야커피" ? "selected" : ""}
                   onClick={() => handleBrandClick("이디야커피")}
                 >
-                  이디야커피
+                  이디야 커피
                 </li>
                 <li
                   className={selectedBrand === "투썸플레이스" ? "selected" : ""}
@@ -105,7 +100,6 @@ const RecordPage = () => {
                 >
                   투썸플레이스
                 </li>
-
               </ul>
             )}
           </DropdownContent>

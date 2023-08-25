@@ -52,7 +52,7 @@ const SignUpPage = () => {
 
       const data = await response.json();
 
-      if (data.message === "Signup Success") {
+      if (data.success) {
         alert("회원 가입 성공!");
         navigate("/");
       } else {
