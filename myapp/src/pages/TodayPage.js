@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useState } from "react";
 import emptycup from "../images/emptycup.png";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function TodayPage() {
-  // const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [isFill, setIsFill] = useState(false);
 
   const recordHandler = () => {
@@ -19,24 +19,24 @@ export default function TodayPage() {
     <Wrapper>
       <Title>오늘 하루 섭취한 카페인</Title>
       <Body>
-        <BsChevronLeft
+        {/* <BsChevronLeft
           style={{
             width: "24px",
             height: "24px",
           }}
-          // onClick={navigateToPrev}}
-        />
+          onClick={navigateToPrev}}
+        /> */}
         <img
           src={emptycup}
           alt="emptycup"
           style={{ margin: "52px 80px 46px 80px" }}
         />
-        <BsChevronRight
+        {/* <BsChevronRight
           style={{
             width: "24px",
             height: "24px",
           }}
-        />
+        /> */}
       </Body>
       <Bottom>
         {isFill ? (
