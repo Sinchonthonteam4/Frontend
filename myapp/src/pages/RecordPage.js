@@ -26,9 +26,9 @@ const RecordPage = () => {
     e.stopPropagation();
   };
 
-  const [selectedBrand, setSelectedBrand] = useState(null);
-  const [selectedMenu, setSelectedMenu] = useState(null);
-  const [selectedAmount, setSelectedAmount] = useState(null);
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedMenu, setSelectedMenu] = useState("");
+  const [selectedAmount, setSelectedAmount] = useState(0);
 
   const handleBrandClick = (brand) => {
     setSelectedBrand(brand);
@@ -50,6 +50,7 @@ const RecordPage = () => {
         cafe: selectedBrand,
         drink: selectedMenu,
         cups: selectedAmount,
+
       };
       console.log(data);
 
@@ -57,6 +58,7 @@ const RecordPage = () => {
         const headers = {
           Authorization: `Bearer ${localStorage.getItem("login-token")}`,
         };
+
 
         axios
           .post(`${BASE_URL}/reports/`, data, { headers: headers })
@@ -68,9 +70,7 @@ const RecordPage = () => {
           .catch((error) => {
             console.error("Error sending data:", error);
           });
-      } else {
-        console.warn("로그인 토큰이 없습니다.");
-      }
+
     } else {
       console.warn("브랜드, 메뉴, 용량을 모두 선택하세요.");
     }
@@ -105,18 +105,7 @@ const RecordPage = () => {
                 >
                   투썸플레이스
                 </li>
-                <li
-                  className={selectedBrand === "탐앤탐스" ? "selected" : ""}
-                  onClick={() => handleBrandClick("탐앤탐스")}
-                >
-                  탐앤탐스
-                </li>
-                <li
-                  className={selectedBrand === "에너지드링크" ? "selected" : ""}
-                  onClick={() => handleBrandClick("에너지드링크")}
-                >
-                  에너지 드링크
-                </li>
+
               </ul>
             )}
           </DropdownContent>
@@ -306,7 +295,7 @@ const BrandName = styled.div`
   display: flex;
   flex-direction: row;
   align-items: self-start;
-  margin-top: 26px;
+  margin-top: 48px;
 
   span {
     display: flex;
@@ -329,7 +318,7 @@ const Menu = styled.div`
   display: flex;
   flex-direction: row;
   align-items: self-start;
-  margin-top: 35px;
+  margin-top: 48px;
 
   span {
     display: flex;
@@ -352,7 +341,7 @@ const Amount = styled.div`
   display: flex;
   flex-direction: row;
   align-items: self-start;
-  margin-top: 36px;
+  margin-top: 48px;
 
   span {
     display: flex;

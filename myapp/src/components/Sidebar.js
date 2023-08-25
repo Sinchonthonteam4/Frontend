@@ -48,8 +48,20 @@ const SideBar = ({ isOpen, setIsOpen }) => {
         >
           하루 섭취량 보기
         </Menu>
-        <Menu>주간 결과 레포트 보기</Menu>
-        <Menu>챌린지 참여하기</Menu>
+        <Menu
+          onClick={() => {
+            navigate("/report");
+          }}
+        >
+          주간 결과 레포트 보기
+        </Menu>
+        <Menu
+          onClick={() => {
+            navigate("/challenge");
+          }}
+        >
+          챌린지 참여하기
+        </Menu>
       </ul>
     </SideBarWrap>
   );

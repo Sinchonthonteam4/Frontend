@@ -9,8 +9,6 @@ import Logo from "../components/Logo";
 import axios from "axios";
 
 export default function TodayPage({ isOpen }) {
-  //const navigate = useNavigate();
-
   const [isFill, setIsFill] = useState(false);
   const [totalCaffeine, setTotalCaffeine] = useState(0);
 
@@ -39,56 +37,18 @@ export default function TodayPage({ isOpen }) {
     navigate("/record");
   };
 
-  // const navigateToPrev = () => {
-  //   navigate('/prevPage')
-  // }
-  const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
 
-  const handleSubmit = () => {
-    const data = {};
-    if (localStorage.getItem("login-token")) {
-      const headers = {
-        Authorization: `Bearer ${localStorage.getItem("login-token")}`,
-      };
-
-      axios
-        .post(`${BASE_URL}/reports/`, data, { headers: headers })
-        .then((response) => {
-          console.log("Data sent successfully:", response.data);
-
-          navigate("/main");
-        })
-        .catch((error) => {
-          console.error("Error sending data:", error);
-        });
-    } else {
-      console.warn("로그인 토큰이 없습니다.");
-    }
-  };
   return (
     <Container>
       <Logo />
       <Wrapper>
         <Title>오늘 하루 섭취한 카페인</Title>
         <Body>
-          {/* <BsChevronLeft
-          style={{
-            width: "24px",
-            height: "24px",
-          }}
-          onClick={navigateToPrev}}
-        /> */}
           <img
             src={emptycup}
             alt="emptycup"
             style={{ margin: "52px 80px 46px 80px" }}
           />
-          {/* <BsChevronRight
-          style={{
-            width: "24px",
-            height: "24px",
-          }}
-        /> */}
         </Body>
         <Bottom>
           {isFill ? (
@@ -135,13 +95,6 @@ const Body = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-`;
-
-const TemporaryBox = styled.div`
-  background-color: #d9d9d9;
-  width: 120px;
-  height: 240px;
-  margin: 60px 0 70px 0;
 `;
 
 const Bottom = styled.div`

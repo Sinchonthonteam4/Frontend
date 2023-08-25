@@ -102,7 +102,7 @@ const Styledbutton = styled.button`
   margin-left: 130px;
   border-radius: 6px;
   background: #ffc107;
-  color: var(--default-white, #fff);
+  color: var(—default-white, #fff);
   font-family: Inter;
   font-size: 16px;
   font-style: normal;
