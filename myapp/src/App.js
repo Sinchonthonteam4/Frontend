@@ -3,6 +3,7 @@ import PrevPage from "./pages/PrevPage";
 import SignUpPage from "./pages/SignUpPage";
 import LogInPage from "./pages/LogInPage";
 import RecordPage from "./pages/RecordPage";
+import ChallengePage from "./pages/ChallengePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ReportPage from "./pages/ReportPage";
 
@@ -17,6 +18,9 @@ function App() {
           {/* <Route path="/prev" element={<PrevPage />} /> */}
           <Route path="/record" element={<RecordPage />} />
           <Route path="/report" element={<ReportPage />} />
+
+          <Route path="/challenge" element={<ChallengePage />} />
+
         </Routes>
       </Router>
     </div>

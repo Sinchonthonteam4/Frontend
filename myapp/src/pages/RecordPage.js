@@ -1,6 +1,8 @@
 import { Container } from "../Containter";
 import { useState } from "react";
 import styled from "styled-components";
+import Logo from "../components/Logo";
+import axios from "axios";
 
 const RecordPage = () => {
   const [brandDropdownOpen, setBrandDropdownOpen] = useState(false);
@@ -23,16 +25,49 @@ const RecordPage = () => {
     e.stopPropagation();
   };
 
-  // 에너지 드링크 클릭할 경우 Menu 선택 불가능
-  const [energyDrinkSelected, setEnergyDrinkSelected] = useState(false);
+  const [selectedBrand, setSelectedBrand] = useState(null);
+  const [selectedMenu, setSelectedMenu] = useState(null);
+  const [selectedAmount, setSelectedAmount] = useState(null);
 
-  const handleEnergyDrinkClick = () => {
-    setEnergyDrinkSelected(true);
-    // 이후에 필요한 로직 추가
+  const handleBrandClick = (brand) => {
+    setSelectedBrand(brand);
+  };
+
+  const handleMenuClick = (menu) => {
+    setSelectedMenu(menu);
+  };
+
+  const handleAmountClick = (amount) => {
+    setSelectedAmount(amount);
+  };
+
+  const BASE_URL =
+    "https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app";
+
+  const handleSubmit = () => {
+    if (selectedBrand && selectedMenu && selectedAmount) {
+      const data = {
+        brand: selectedBrand,
+        menu: selectedMenu,
+        amount: selectedAmount,
+      };
+
+      axios
+        .post(`${BASE_URL}/reports/`, data)
+        .then((response) => {
+          console.log("Data sent successfully:", response.data);
+        })
+        .catch((error) => {
+          console.error("Error sending data:", error);
+        });
+    } else {
+      console.warn("브랜드, ");
+    }
   };
 
   return (
     <Container>
+      <Logo />
       <Wrapper>
         <Title>기록하기</Title>
         <BrandName>
@@ -41,13 +76,35 @@ const RecordPage = () => {
             <button onClick={toggleBrandDropdown}>브랜드를 선택하세요</button>
             {brandDropdownOpen && (
               <ul>
-                <li>스타벅스</li>
-                <li>이디야 커피</li>
-                <li>투썸플레이스</li>
-                <li>탐앤탐스</li>
                 <li
-                  onClick={handleEnergyDrinkClick}
-                  className={energyDrinkSelected ? "disabled" : ""}
+                  className={selectedBrand === "스타벅스" ? "selected" : ""}
+                  onClick={() => handleBrandClick("스타벅스")}
+                >
+                  스타벅스
+                </li>
+                <li
+                  className={selectedBrand === "이디야 커피" ? "selected" : ""}
+                  onClick={() => handleBrandClick("이디야 커피")}
+                >
+                  이디야 커피
+                </li>
+                <li
+                  className={selectedBrand === "투썸플레이스" ? "selected" : ""}
+                  onClick={() => handleBrandClick("투썸플레이스")}
+                >
+                  투썸플레이스
+                </li>
+                <li
+                  className={selectedBrand === "탐앤탐스" ? "selected" : ""}
+                  onClick={() => handleBrandClick("탐앤탐스")}
+                >
+                  탐앤탐스
+                </li>
+                <li
+                  className={
+                    selectedBrand === "에너지 드링크" ? "selected" : ""
+                  }
+                  onClick={() => handleBrandClick("에너지 드링크")}
                 >
                   에너지 드링크
                 </li>
@@ -58,20 +115,39 @@ const RecordPage = () => {
         <Menu>
           <span>메뉴</span>
           <DropdownContent>
-            <button
-              onClick={toggleMenuDropdown}
-              className={energyDrinkSelected ? "disabled" : ""}
-              disabled={energyDrinkSelected}
-            >
-              메뉴를 선택하세요
-            </button>
-            {menuDropdownOpen && !energyDrinkSelected && (
+            <button onClick={toggleMenuDropdown}>메뉴를 선택하세요</button>
+            {menuDropdownOpen && (
               <ul>
-                <li>아메리카노</li>
-                <li>카페라떼</li>
-                <li>바닐라 라떼</li>
-                <li>오트밀라떼</li>
-                <li>콜드브루</li>
+                <li
+                  className={selectedMenu === "아메리카노" ? "selected" : ""}
+                  onClick={() => handleMenuClick("아메리카노")}
+                >
+                  아메리카노
+                </li>
+                <li
+                  className={selectedMenu === "카페라떼" ? "selected" : ""}
+                  onClick={() => handleMenuClick("카페라떼")}
+                >
+                  카페라떼
+                </li>
+                <li
+                  className={selectedMenu === "바닐라라떼" ? "selected" : ""}
+                  onClick={() => handleMenuClick("바닐라라떼")}
+                >
+                  바닐라라떼
+                </li>
+                <li
+                  className={selectedMenu === "오트밀라떼" ? "selected" : ""}
+                  onClick={() => handleMenuClick("오트밀라떼")}
+                >
+                  오트밀라떼
+                </li>
+                <li
+                  className={selectedMenu === "콜드브루" ? "selected" : ""}
+                  onClick={() => handleMenuClick("콜드브루")}
+                >
+                  콜드브루
+                </li>
               </ul>
             )}
           </DropdownContent>
@@ -82,10 +158,30 @@ const RecordPage = () => {
             <button onClick={toggleAmountDropdown}>섭취량을 선택하세요</button>
             {amountDropdownOpen && (
               <ul>
-                <li>1잔</li>
-                <li>2잔</li>
-                <li>3잔</li>
-                <li>4잔</li>
+                <li
+                  className={selectedAmount === "1잔" ? "selected" : ""}
+                  onClick={() => handleAmountClick("1잔")}
+                >
+                  1잔
+                </li>
+                <li
+                  className={selectedAmount === "2잔" ? "selected" : ""}
+                  onClick={() => handleAmountClick("2잔")}
+                >
+                  2잔
+                </li>
+                <li
+                  className={selectedAmount === "3잔" ? "selected" : ""}
+                  onClick={() => handleAmountClick("3잔")}
+                >
+                  3잔
+                </li>
+                <li
+                  className={selectedAmount === "4잔" ? "selected" : ""}
+                  onClick={() => handleAmountClick("4잔")}
+                >
+                  4잔
+                </li>
                 <li>
                   <input
                     type="text"
@@ -97,7 +193,7 @@ const RecordPage = () => {
             )}
           </DropdownContent>
         </Amount>
-        <ResultBtn>결과 보기</ResultBtn>
+        <ResultBtn onClick={handleSubmit}>결과 보기</ResultBtn>
       </Wrapper>
     </Container>
   );
@@ -150,6 +246,7 @@ const DropdownContent = styled.div`
     font-weight: 500;
     line-height: 12px; /* 100% */
     text-transform: uppercase;
+    cursor: pointer;
   }
 
   ul {
@@ -173,12 +270,24 @@ const DropdownContent = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: 16px;
+    cursor: pointer;
 
     input {
       max-width: 100%;
       width: 100%;
       border: none;
+      color: var(--secondary-dark-color, #54595e);
+      font-family: Pretendard Variable;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 16px;
     }
+  }
+
+  li.selected {
+    border-radius: var(--percent, 0px);
+    background: #fff3cd;
   }
 `;
 
@@ -264,4 +373,6 @@ const ResultBtn = styled.div`
   font-weight: 600;
   line-height: 18px; /* 112.5% */
   margin-top: 43px;
+  margin-bottom: 97px;
+  cursor: pointer;
 `;

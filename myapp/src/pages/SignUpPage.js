@@ -6,8 +6,8 @@ import { Container } from "../Containter";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
 
-const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
 
+const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
