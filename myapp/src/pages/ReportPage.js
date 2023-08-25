@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Logo from "../components/Logo";
 import { Container } from "../Containter";
-import coinimg from "../images/coin.svg";
+import Goldcoin from "../images/Goldcoin.svg";
 
 const ReportPage = () => {
   const weeklyData = {
@@ -37,6 +37,19 @@ const ReportPage = () => {
           </BarsArea>
         </GraphContent>
       </GraphContainer>
+      <Body>
+        <Explain>
+          OOO님이 일주일 간 섭취한 <br />
+          카페인량은 총 XX mg 이며, <br />
+          X요일에 가장 많이 섭취하셨네요!
+          <br />
+          <br /> 내 평균 섭취량은 XXmg으로, <br />
+          일주일 권장 섭취량보다 XX mg 더/덜 마셨어요.
+          <br />
+          <br /> 또한 탈수 증상을 일으키므로 <br /> 물을 충분히 섭취하세요!
+        </Explain>
+        <ShareBtn>챌린지 공유하기</ShareBtn>
+      </Body>
     </Container>
   );
 };
@@ -137,4 +150,37 @@ const DayLabel = styled.div`
   font-weight: 500;
   line-height: normal;
 `;
+
+const Body = styled.div`
+  width: 320px;
+  margin: 24px 16px 32px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
+const Explain = styled.div`
+  text-align: center;
+  margin-bottom: 42px;
+  line-height: 28px;
+`;
+
+const ShareBtn = styled.div`
+  background-color: #ffc107;
+  cursor: pointer;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  width: 140px;
+  height: 38px;
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 12px;
+`;
+
 export default ReportPage;
