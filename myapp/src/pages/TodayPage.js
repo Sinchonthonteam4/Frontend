@@ -4,8 +4,6 @@ import { useState } from "react";
 import emptycup from "../images/emptycup.png";
 import { useNavigate } from "react-router-dom";
 
-export default function TodayPage() {
-
 import { Container } from "../Containter";
 import Logo from "../components/Logo";
 

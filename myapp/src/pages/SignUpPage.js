@@ -6,7 +6,6 @@ import { Container } from "../Containter";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
 
-
 const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -68,7 +67,7 @@ const SignUpPage = () => {
   return (
     <Container>
       <Logo />
-      <Header text="로그인 하기" />
+      <Header text="회원가입 하기" />
       <InputComponent
         type="text"
         placeholder="사용할 이메일을 입력하세요. "

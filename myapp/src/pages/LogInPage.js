@@ -36,6 +36,7 @@ const LogInPage = () => {
         console.log(data.message || "로그인 실패!");
       }
     } catch (error) {
+      console.log(error);
       console.log("서버와의 통신에 실패했습니다.");
     }
   };
