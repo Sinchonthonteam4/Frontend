@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import Logo from "../components/Logo";
 import { Container } from "../Containter";
-import coinimg from "../images/coin.svg";
+import coinimg from "../images/Coin.svg";
 
 const ReportPage = () => {
   const weeklyData = {
