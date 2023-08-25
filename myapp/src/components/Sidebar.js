@@ -1,77 +1,80 @@
 import styled from "styled-components";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { CgClose } from "react-icons/cg";
+import { useNavigate } from "react-router-dom";
 
-const Sidebar = ({ width = 295, children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [xPosition, setX] = useState(width);
-  const side = useRef();
-
-  // button 클릭 시 토글
-  const toggleMenu = () => {
-    if (xPosition > 0) {
-      setX(0);
-      setIsOpen(true);
-    } else {
-      setX(width);
-      setIsOpen(false);
-    }
-  };
-
-  // 사이드바 외부 클릭시 닫히는 함수
-  const handleClose = (e) => {
-    let sideArea = side.current;
-    let sideCildren = side.current.contains(e.target);
-    if (isOpen && (!sideArea || !sideCildren)) {
-      setX(width);
-      setIsOpen(false);
-    }
-  };
+const Sidebar = ({ isOpen, setIsOpen }) => {
+  const outside = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    window.addEventListener("click", handleClose);
+    document.addEventListener("mousedown", handlerOutsie);
     return () => {
-      window.removeEventListener("click", handleClose);
+      document.removeEventListener("mousedown", handlerOutsie);
     };
-  });
+  }, []);
+
+  const handlerOutsie = (e) => {
+    if (!outside.current.contains(e.target)) {
+      toggleSide();
+    }
+  };
+
+  const toggleSide = () => {
+    setIsOpen(false);
+  };
 
   return (
-    <Wrapper>
-      <SidebarContainer>
-        <ToggleBtn onClick={() => toggleMenu()}>
-          {isOpen ? <CgClose /> : <></>}
-        </ToggleBtn>
-      </SidebarContainer>
-    </Wrapper>
+    <SideBarWrap
+      ref={outside}
+      style={isOpen ? { display: "block" } : { display: "none" }}
+    >
+      <CgClose
+        style={{
+          width: "24px",
+          height: "24px",
+          cursor: "pointer",
+          color: "white",
+        }}
+        onClick={toggleSide}
+        onKeyDown={toggleSide}
+      />
+
+      <ul>
+        <Menu
+          onClick={() => {
+            navigate("/main");
+          }}
+        >
+          하루 섭취량 보기
+        </Menu>
+        <Menu>주간 결과 레포트 보기</Menu>
+        <Menu>챌린지 참여하기</Menu>
+      </ul>
+    </SideBarWrap>
   );
 };
 
 export default Sidebar;
 
-const Wrapper = styled.div`
-  background-color: white;
+const SideBarWrap = styled.div`
+  z-index: 5;
+  padding: 12px;
+  background-color: #ffc107;
   height: 100%;
-`;
-const SidebarContainer = styled.div`
-  background-color: inherit;
+  width: 295px;
   position: fixed;
+  transition: 0.5s ease;
   top: 0;
-  bottom: 0;
   left: 0;
-  transition: 0.4s ease;
-  color: #202020;
-  height: 100%;
-  z-index: 99;
 `;
-const ToggleBtn = styled.button`
-  position: relative;
-  left: 330px;
-  top: 10px;
-  width: 40px;
-  height: 40px;
-  z-index: 99;
-  transition: 0.8s ease;
-  border: 2px solid #202020;
-  border-radius: 40px;
-  overflow: hidden;
+
+const Menu = styled.li`
+  display: block;
+  padding: 4% 0;
+  margin: 30px 0;
+  list-style-type: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
 `;

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
 import vector from "../images/Vector.svg";
+import Sidebar from "./SideBar";
 
 const Logo = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   const toggleSide = () => {
     setIsOpen(!isOpen);
   };
@@ -13,12 +15,14 @@ const Logo = () => {
       <MenuBtn role="button" onClick={toggleSide}>
         <MenuImg src={vector} />
       </MenuBtn>
-      <LogoBox>커피마스터</LogoBox>
+      <LogoBox>커피 마스터</LogoBox>
+      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
     </LogoContainer>
   );
 };
 
 const LogoContainer = styled.div`
+  margin: auto;
   width: 360px;
   height: 60px;
   display: flex;

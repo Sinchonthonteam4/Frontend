@@ -2,9 +2,10 @@ import styled from "styled-components";
 //import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useState } from "react";
 import emptycup from "../images/emptycup.png";
-// import { useNavigate } from "react-router-dom";
+import { Container } from "../Containter";
+import Logo from "../components/Logo";
 
-export default function TodayPage() {
+export default function TodayPage({ isOpen }) {
   //const navigate = useNavigate();
   const [isFill, setIsFill] = useState(false);
 
@@ -17,51 +18,54 @@ export default function TodayPage() {
   // }
 
   return (
-    <Wrapper>
-      <Title>오늘 하루 섭취한 카페인</Title>
-      <Body>
-        {/* <BsChevronLeft
+    <Container>
+      <Logo />
+      <Wrapper>
+        <Title>오늘 하루 섭취한 카페인</Title>
+        <Body>
+          {/* <BsChevronLeft
           style={{
             width: "24px",
             height: "24px",
           }}
           onClick={navigateToPrev}}
         /> */}
-        <img
-          src={emptycup}
-          alt="emptycup"
-          style={{ margin: "52px 80px 46px 80px" }}
-        />
-        {/* <BsChevronRight
+          <img
+            src={emptycup}
+            alt="emptycup"
+            style={{ margin: "52px 80px 46px 80px" }}
+          />
+          {/* <BsChevronRight
           style={{
             width: "24px",
             height: "24px",
           }}
         /> */}
-      </Body>
-      <Bottom>
-        {isFill ? (
-          <>
-            <AlertText>
-              오늘 하루 적정량보다
-              <br /> xx mg 더 섭취했어요.
-              <br />
-              <br /> OO님, 조절이 필요해요!
-            </AlertText>
-            <EditBtn>
-              <text>섭취량 수정하기</text>
-            </EditBtn>
-            <ShareBtn>
-              <text>내 결과 공유하기</text>
-            </ShareBtn>
-          </>
-        ) : (
-          <RecordBtn onClick={recordHandler}>
-            <text>섭취량 기록하기</text>
-          </RecordBtn>
-        )}
-      </Bottom>
-    </Wrapper>
+        </Body>
+        <Bottom>
+          {isFill ? (
+            <>
+              <AlertText>
+                오늘 하루 적정량보다
+                <br /> xx mg 더 섭취했어요.
+                <br />
+                <br /> OO님, 조절이 필요해요!
+              </AlertText>
+              <EditBtn>
+                <text>섭취량 수정하기</text>
+              </EditBtn>
+              <ShareBtn>
+                <text>내 결과 공유하기</text>
+              </ShareBtn>
+            </>
+          ) : (
+            <RecordBtn onClick={recordHandler}>
+              <text>섭취량 기록하기</text>
+            </RecordBtn>
+          )}
+        </Bottom>
+      </Wrapper>
+    </Container>
   );
 }
 

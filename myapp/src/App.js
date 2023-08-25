@@ -1,6 +1,3 @@
-import { Container } from "./Containter";
-import Header from "./components/Header";
-import Logo from "./components/Logo";
 import TodayPage from "./pages/TodayPage";
 //import PrevPage from "./pages/PrevPage";
 import SignUpPage from "./pages/SignUpPage";

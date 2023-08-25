@@ -4,6 +4,7 @@ import { Container } from "../Containter";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
+
 const LogInPage = () => {
   const navigate = useNavigate();
   const handleGoToSignUp = () => {
