@@ -2,10 +2,19 @@ import styled from "styled-components";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useState } from "react";
 import emptycup from "../images/emptycup.png";
+import { useNavigate } from "react-router-dom";
 
 export default function TodayPage() {
+  // const navigate = useNavigate();
   const [isFill, setIsFill] = useState(false);
 
+  const recordHandler = () => {
+    setIsFill(true);
+  };
+
+  // const navigateToPrev = () => {
+  //   navigate('/prevPage')
+  // }
   return (
     <Wrapper>
       <Title>오늘 하루 섭취한 카페인</Title>
@@ -15,6 +24,7 @@ export default function TodayPage() {
             width: "24px",
             height: "24px",
           }}
+          // onClick={navigateToPrev}}
         />
         <img
           src={emptycup}
@@ -29,21 +39,26 @@ export default function TodayPage() {
         />
       </Body>
       <Bottom>
-        {/* <RecordBtn>
-          <text>섭취량 기록하기</text>
-        </RecordBtn> */}
-        <AlertText>
-          오늘 하루 적정량보다
-          <br /> xx mg 더 섭취했어요.
-          <br />
-          <br /> OO님, 조절이 필요해요!
-        </AlertText>
-        <EditBtn>
-          <text>섭취량 수정하기</text>
-        </EditBtn>
-        <ShareBtn>
-          <text>내 결과 공유하기</text>
-        </ShareBtn>
+        {isFill ? (
+          <>
+            <AlertText>
+              오늘 하루 적정량보다
+              <br /> xx mg 더 섭취했어요.
+              <br />
+              <br /> OO님, 조절이 필요해요!
+            </AlertText>
+            <EditBtn>
+              <text>섭취량 수정하기</text>
+            </EditBtn>
+            <ShareBtn>
+              <text>내 결과 공유하기</text>
+            </ShareBtn>
+          </>
+        ) : (
+          <RecordBtn onClick={recordHandler}>
+            <text>섭취량 기록하기</text>
+          </RecordBtn>
+        )}
       </Bottom>
     </Wrapper>
   );
