@@ -3,8 +3,14 @@ import { useState } from "react";
 import styled from "styled-components";
 import Logo from "../components/Logo";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RecordPage = () => {
+  const navigate = useNavigate();
+  const recordHandler = () => {
+    navigate("/finished");
+  };
+
   const [brandDropdownOpen, setBrandDropdownOpen] = useState(false);
   const [menuDropdownOpen, setMenuDropdownOpen] = useState(false);
   const [amountDropdownOpen, setAmountDropdownOpen] = useState(false);
@@ -193,7 +199,7 @@ const RecordPage = () => {
             )}
           </DropdownContent>
         </Amount>
-        <ResultBtn onClick={handleSubmit}>결과 보기</ResultBtn>
+        <ResultBtn onClick={recordHandler}>결과 보기</ResultBtn>
       </Wrapper>
     </Container>
   );

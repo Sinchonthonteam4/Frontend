@@ -1,16 +1,10 @@
 import styled from "styled-components";
 import emptycup from "../images/emptycup.png";
-import { useNavigate } from "react-router-dom";
 
 import { Container } from "../Containter";
 import Logo from "../components/Logo";
 
-export default function TodayPage() {
-  const navigate = useNavigate();
-  const recordHandler = () => {
-    navigate("/record");
-  };
-
+export function TodayFinished() {
   return (
     <Container>
       <Logo />
@@ -24,9 +18,18 @@ export default function TodayPage() {
           />
         </Body>
         <Bottom>
-          <RecordBtn onClick={recordHandler}>
-            <text>섭취량 기록하기</text>
-          </RecordBtn>
+          <AlertText>
+            오늘 하루 적정량보다
+            <br /> 100 mg 더 섭취했어요.
+            <br />
+            <br /> 한아님, 조절이 필요해요!
+          </AlertText>
+          <EditBtn>
+            <text>섭취량 수정하기</text>
+          </EditBtn>
+          <ShareBtn>
+            <text>내 결과 공유하기</text>
+          </ShareBtn>
         </Bottom>
       </Wrapper>
     </Container>
@@ -60,10 +63,13 @@ const Bottom = styled.div`
   align-items: center;
   text-align: center;
 `;
+const AlertText = styled.text`
+  font-size: 16px;
+  font-weight: 600;
+`;
 
-const RecordBtn = styled.button`
+const EditBtn = styled.button`
   background-color: #ffc107;
-  cursor: pointer;
   color: white;
   font-size: 16px;
   font-weight: 600;
@@ -71,4 +77,16 @@ const RecordBtn = styled.button`
   height: 38px;
   border: none;
   border-radius: 6px;
+  margin: 53px 0 26px 0;
+`;
+const ShareBtn = styled.button`
+  background-color: #ffc107;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  width: 140px;
+  height: 38px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 8px;
 `;
