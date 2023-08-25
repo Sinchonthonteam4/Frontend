@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import vector from "../images/Vector.svg";
-import Sidebar from "./SideBar";
+import SideBar from "../components/SideBar";
 
 const Logo = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +16,7 @@ const Logo = () => {
         <MenuImg src={vector} />
       </MenuBtn>
       <LogoBox>커피 마스터</LogoBox>
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+      <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />
     </LogoContainer>
   );
 };

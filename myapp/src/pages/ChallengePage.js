@@ -7,7 +7,7 @@ import sogang from "../images/Sogang.png";
 import yonsei from "../images/Yonsei.png";
 import ewha from "../images/Ewha.png";
 import hongik from "../images/Hongik.png";
-import coin from "../images/coin.svg";
+import coin from "../images/Coin.svg";
 
 const ChallengePage = () => {
   return (
