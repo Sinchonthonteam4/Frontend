@@ -8,6 +8,7 @@ import { Container } from "../Containter";
 import Logo from "../components/Logo";
 import axios from "axios";
 
+export default function TodayPage() {
 export default function TodayPage({ isOpen }) {
   const [isFill, setIsFill] = useState(false);
   const [totalCaffeine, setTotalCaffeine] = useState(0);
@@ -33,7 +34,6 @@ export default function TodayPage({ isOpen }) {
       });
   }, []);
   const recordHandler = () => {
-    setIsFill(true);
     navigate("/record");
   };
 
@@ -51,6 +51,9 @@ export default function TodayPage({ isOpen }) {
           />
         </Body>
         <Bottom>
+          <RecordBtn onClick={recordHandler}>
+            <text>섭취량 기록하기</text>
+          </RecordBtn>
           {isFill ? (
             <>
               <AlertText>
@@ -115,32 +118,4 @@ const RecordBtn = styled.button`
   height: 38px;
   border: none;
   border-radius: 6px;
-`;
-
-const AlertText = styled.text`
-  font-size: 16px;
-  font-weight: 600;
-`;
-
-const EditBtn = styled.button`
-  background-color: #ffc107;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  width: 140px;
-  height: 38px;
-  border: none;
-  border-radius: 6px;
-  margin: 53px 0 26px 0;
-`;
-const ShareBtn = styled.button`
-  background-color: #ffc107;
-  color: white;
-  font-size: 16px;
-  font-weight: 600;
-  width: 140px;
-  height: 38px;
-  border: none;
-  border-radius: 6px;
-  margin-bottom: 8px;
 `;

@@ -5,6 +5,7 @@ import RecordPage from "./pages/RecordPage";
 import ChallengePage from "./pages/ChallengePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ReportPage from "./pages/ReportPage";
+import { TodayFinished } from "./pages/TodayFinished";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<LogInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/main" element={<TodayPage />} />
+          <Route path="/finished" element={<TodayFinished />} />
           <Route path="/record" element={<RecordPage />} />
           <Route path="/report" element={<ReportPage />} />
           <Route path="/challenge" element={<ChallengePage />} />

@@ -3,11 +3,16 @@ import styled from "styled-components";
 import vector from "../images/Vector.svg";
 import SideBar from "./SideBar";
 import MainLogo from "../images/Caffein-er.png";
+import { useNavigate } from "react-router-dom";
 
 
 const Logo = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
+  const navHome = () => {
+    navigate("/main");
+  };
   const toggleSide = () => {
     setIsOpen(!isOpen);
   };
@@ -17,7 +22,7 @@ const Logo = () => {
       <MenuBtn role="button" onClick={toggleSide}>
         <MenuImg src={vector} />
       </MenuBtn>
-      <LogoBox>
+      <LogoBox onClick={navHome}>
         <img src={MainLogo} alt="logo" />
       </LogoBox>
 
