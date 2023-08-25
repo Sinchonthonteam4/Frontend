@@ -45,7 +45,7 @@ const MenuImg = styled.img`
 const LogoBox = styled.div`
   padding-top: 5px;
   color: #ffc107;
-  font-family: RixInooAriDuri;
+  font-family: "RixInooAriDuri";
   font-size: 32px;
   font-style: normal;
   font-weight: 400;

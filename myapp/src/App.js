@@ -1,5 +1,4 @@
 import TodayPage from "./pages/TodayPage";
-import PrevPage from "./pages/PrevPage";
 import SignUpPage from "./pages/SignUpPage";
 import LogInPage from "./pages/LogInPage";
 import RecordPage from "./pages/RecordPage";
@@ -13,7 +12,6 @@ function App() {
           <Route path="/" element={<LogInPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/main" element={<TodayPage />} />
-          {/* <Route path="/prev" element={<PrevPage />} /> */}
           <Route path="/record" element={<RecordPage />} />
         </Routes>
       </Router>
