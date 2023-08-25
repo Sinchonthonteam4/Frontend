@@ -31,6 +31,7 @@ const LogInPage = () => {
 
       if (data.message === "Login Success") {
         alert("로그인 성공!");
+        localStorage.setItem("login-token", data.token.access);
         navigate("/main");
       } else {
         console.log(data.message || "로그인 실패!");

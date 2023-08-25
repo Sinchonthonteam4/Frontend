@@ -3,6 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Logo from "../components/Logo";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const RecordPage = () => {
   const [brandDropdownOpen, setBrandDropdownOpen] = useState(false);
@@ -38,30 +39,40 @@ const RecordPage = () => {
   };
 
   const handleAmountClick = (amount) => {
-    setSelectedAmount(amount);
+    setSelectedAmount(Number(amount));
   };
-
-  const BASE_URL =
-    "https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app";
+  const navigate = useNavigate();
+  const BASE_URL = `https://port-0-coffee-master-lyc2mllqwjup5.sel3.cloudtype.app`;
 
   const handleSubmit = () => {
     if (selectedBrand && selectedMenu && selectedAmount) {
       const data = {
-        brand: selectedBrand,
-        menu: selectedMenu,
-        amount: selectedAmount,
+        cafe: selectedBrand,
+        drink: selectedMenu,
+        cups: selectedAmount,
       };
+      console.log(data);
 
-      axios
-        .post(`${BASE_URL}/reports/`, data)
-        .then((response) => {
-          console.log("Data sent successfully:", response.data);
-        })
-        .catch((error) => {
-          console.error("Error sending data:", error);
-        });
+      if (localStorage.getItem("login-token")) {
+        const headers = {
+          Authorization: `Bearer ${localStorage.getItem("login-token")}`,
+        };
+
+        axios
+          .post(`${BASE_URL}/reports/`, data, { headers: headers })
+          .then((response) => {
+            console.log("Data sent successfully:", response.data);
+
+            navigate("/main");
+          })
+          .catch((error) => {
+            console.error("Error sending data:", error);
+          });
+      } else {
+        console.warn("로그인 토큰이 없습니다.");
+      }
     } else {
-      console.warn("브랜드, ");
+      console.warn("브랜드, 메뉴, 용량을 모두 선택하세요.");
     }
   };
 
@@ -83,10 +94,10 @@ const RecordPage = () => {
                   스타벅스
                 </li>
                 <li
-                  className={selectedBrand === "이디야 커피" ? "selected" : ""}
-                  onClick={() => handleBrandClick("이디야 커피")}
+                  className={selectedBrand === "이디야커피" ? "selected" : ""}
+                  onClick={() => handleBrandClick("이디야커피")}
                 >
-                  이디야 커피
+                  이디야커피
                 </li>
                 <li
                   className={selectedBrand === "투썸플레이스" ? "selected" : ""}
@@ -101,10 +112,8 @@ const RecordPage = () => {
                   탐앤탐스
                 </li>
                 <li
-                  className={
-                    selectedBrand === "에너지 드링크" ? "selected" : ""
-                  }
-                  onClick={() => handleBrandClick("에너지 드링크")}
+                  className={selectedBrand === "에너지드링크" ? "selected" : ""}
+                  onClick={() => handleBrandClick("에너지드링크")}
                 >
                   에너지 드링크
                 </li>
@@ -125,28 +134,30 @@ const RecordPage = () => {
                   아메리카노
                 </li>
                 <li
+                  className={selectedMenu === "에스프레소" ? "selected" : ""}
+                  onClick={() => handleMenuClick("에스프레소")}
+                >
+                  에스프레소
+                </li>
+                <li
                   className={selectedMenu === "카페라떼" ? "selected" : ""}
                   onClick={() => handleMenuClick("카페라떼")}
                 >
                   카페라떼
                 </li>
                 <li
-                  className={selectedMenu === "바닐라라떼" ? "selected" : ""}
-                  onClick={() => handleMenuClick("바닐라라떼")}
+                  className={selectedMenu === "카푸치노" ? "selected" : ""}
+                  onClick={() => handleMenuClick("카푸치노")}
                 >
-                  바닐라라떼
+                  카푸치노
                 </li>
                 <li
-                  className={selectedMenu === "오트밀라떼" ? "selected" : ""}
-                  onClick={() => handleMenuClick("오트밀라떼")}
+                  className={
+                    selectedMenu === "카라멜마키아토" ? "selected" : ""
+                  }
+                  onClick={() => handleMenuClick("카라멜마키아토")}
                 >
-                  오트밀라떼
-                </li>
-                <li
-                  className={selectedMenu === "콜드브루" ? "selected" : ""}
-                  onClick={() => handleMenuClick("콜드브루")}
-                >
-                  콜드브루
+                  카라멜마키아토
                 </li>
               </ul>
             )}
@@ -160,25 +171,25 @@ const RecordPage = () => {
               <ul>
                 <li
                   className={selectedAmount === 1 ? "selected" : ""}
-                  onClick={() => handleAmountClick("1잔")}
+                  onClick={() => handleAmountClick(1)}
                 >
                   1잔
                 </li>
                 <li
                   className={selectedAmount === 2 ? "selected" : ""}
-                  onClick={() => handleAmountClick("2잔")}
+                  onClick={() => handleAmountClick(2)}
                 >
                   2잔
                 </li>
                 <li
                   className={selectedAmount === 3 ? "selected" : ""}
-                  onClick={() => handleAmountClick("3잔")}
+                  onClick={() => handleAmountClick(3)}
                 >
                   3잔
                 </li>
                 <li
                   className={selectedAmount === 4 ? "selected" : ""}
-                  onClick={() => handleAmountClick("4잔")}
+                  onClick={() => handleAmountClick(4)}
                 >
                   4잔
                 </li>
